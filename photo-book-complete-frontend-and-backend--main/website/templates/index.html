@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>photo-book</title>
+  <style>
+    
+    .container {
+  position: fixed;
+  display: block;
+  height: 100%;
+  width: 100%;
+
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+.container .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cls {
+			position: absolute;
+			top: 98%;
+			left: 58%;
+			transform: translate(-50%, -50%);
+			background-color: #b7401e;
+			color: rgb(12, 2, 2);
+			padding: 10px 10px;
+            border: 5px solid black;
+
+			cursor: pointer;
+            
+        }
+        .cls:hover {
+  background-color: rgb(231, 231, 162);
+}
+.cls1{
+    
+        
+    position: absolute;
+    top: 98%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: rgb(15, 1, 1);
+    padding: 10px 10px;
+    border: 5px solid black;
+    cursor: pointer;
+          
+      }
+      .cls1:hover {
+background-color: rgb(225, 225, 178);
+}
+.box {
+  border: 10px solid rgb(224, 224, 182);
+  padding: 60px;
+  width: 400px;
+  margin: 10px auto;
+  text-align: center;
+}
+.box h1 {
+  font-size: 59px;
+  margin-bottom: 20px;
+  color: rgb(19, 19, 18);
+}
+
+.box h3 {
+  color: rgb(53, 54, 52);
+  font-size: 38px;
+}
+
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <img src="{{ url_for('static', filename='images/index1.webp') }}" alt="img">
+    <div class="text">
+      <h1 style="text-align: center; font-weight: bolder; color: #eae3e3;">{% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        {% endif %}
+        {% endwith %}</h1>
+      <div class="box">
+        
+      <h1><b>Welcome to Photo-Book</b></h1>
+      <h3><b>If you don't have an account signup first</b></h3></div>
+      <a href="/login">
+        <button class="cls"><b>Login </b></button>
+      </a>
+      <a href="/signup">
+        <button class="cls1"><b>signup </b></button>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

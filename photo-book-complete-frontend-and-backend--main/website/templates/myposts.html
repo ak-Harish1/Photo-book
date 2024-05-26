@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .cls {
+			position: absolute;
+			top: 15%;
+			left: 85%;
+			transform: translate(-50%, -50%);
+			background-color: #b7401e;
+			color: rgb(65, 55, 55);
+			padding: 10px 10px;
+      border: 5px solid black;
+
+			cursor: pointer;
+            
+        }
+        .cls:hover {
+  background-color: rgb(231, 231, 162);
+}
+.cls1 {
+			position: absolute;
+			top: 15%;
+			left: 90%;
+			transform: translate(-50%, -50%);
+			background-color: #b7401e;
+			color: rgb(65, 55, 55);
+			padding: 10px 10px;
+            border: 5px solid black;
+
+			cursor: pointer;
+            
+        }
+        .cls1:hover {
+  background-color: rgb(231, 231, 162);
+}
+body{
+  background-color: #f8fed8;
+}
+.my-btn {
+			position: absolute;
+			top: 30%;
+			left: 90%;
+			transform: translate(-50%, -50%);
+			background-color: #b7401e;
+			color: rgb(252, 243, 243);
+			padding: 10px 10px;
+            border: 5px solid rgb(244, 237, 237);
+
+			cursor: pointer;
+            
+        }
+        .my-btn:hover {
+  background-color: rgb(243, 8, 8);
+}
+
+    </style>
+</head>
+<body>
+  
+  <h1 style="text-align: center;"> You can upload your photos here</h1>
+  <form method="POST" enctype="multipart/form-data">
+    <div style="margin-bottom: 1rem;">
+      <label for="photo" style="font-weight: bold;">Upload Photo:</label>
+      <input type="file" style="padding: 0.5rem; border: 1px solid #ccc;" id="photo" name="photo">
+    </div>
+    <h3 style="text-align: center;">Please select the image first and then select whether you want to make the photo public or not</h3>
+    <label for="permission" style="font-weight: bolder;">Can we display this photo on the homepage?</label>
+    <input type="radio" id="permission" name="permission" value="yes">Yes
+    <input type="radio" id="permission" name="permission" value="no">No
+    <button type="submit" style="background-color: #e95207; color: #fff; border: none; padding: 0.5rem 1rem;">Upload</button>
+  </form>
+  
+  {% block content %}
+<a href="/signout">
+
+  <button class="cls1" >log out</button>
+</a>
+<a href="/">
+  <button class="cls"><b>HOME </b></button>
+</a>
+<form action="{{ url_for('delete_user') }}" method="post">
+  <button type="submit" class="my-btn">Delete Account</button>
+</form>
+
+  {% if message %}
+  {{message}}
+{% endif %}
+{% for photo_url in photo_urls %}
+<img src="{{ photo_url }}" alt="User photo" style="width: 200px; height: 200px;">
+{% endfor %}
+{% endblock %} 
+</body>
+</html>

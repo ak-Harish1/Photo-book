@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+
+/* .body{
+  background-color: aqua;
+} */
+      ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #030303;
+
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+  
+}
+li a:hover{
+  background-color:rgb(83, 249, 119);
+}
+.fill{
+  background-color: rgb(49, 42, 55);
+  padding-bottom: 1px;
+  padding-top: 2%;
+}
+body{
+  background-color: rgb(252, 242, 233)
+}
+</style>
+</head>
+<body>
+  <!-- <form action="home"></form> -->
+  {% block content %}
+
+  <div class="fill">
+    <a href="/home"></a>
+
+      <h1 style="text-align: center; color: rgb(252, 253, 250);">Welcome to PHOTO-BOOK</h1>
+    </div>
+     <ul>
+    {% if session.get('user_id') %}
+    <li><a href="/myposts" style="color: rgb(251, 252, 248); text-decoration: none; "><b>My Posts</b></a></li>
+    {% endif %}
+    <li><a href="/index" style="color: rgb(251, 251, 248); text-decoration: none;"><b>SignUp / Login</b></a></li>
+  </ul><br><br>
+
+    <!-- <h1>Home Page</h1> -->
+    <div class="row">
+        {% for ph in photos %}
+            <!-- <div class="col-md-4"> -->
+                <img src="{{ ph }}" alt="image" style="height: 300p; width: 300px;" />
+            <!-- </div> -->
+        {% endfor %}
+    </div>
+
+    {% with msg = get_flashed_messages() %}   
+    {% if msg %}
+       {{ msg }}
+  
+    {% endif %}
+  {% endwith %}
+{% endblock %}  
+</body>
+</html>
