@@ -11,8 +11,8 @@ import secrets
 s3 = boto3.client('s3')
 app = Flask(__name__)
 app.secret_key = 'key'
-supabase_url = 'https://ifrfizobgwcmvvivvsiv.supabase.co'
-supabase_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmcmZpem9iZ3djbXZ2aXZ2c2l2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzgwOTU5MjcsImV4cCI6MTk5MzY3MTkyN30.o9xnPJkaj381ZIY6oftDekEz1yevCWM81cFxt-UdZ6g'
+supabase_url = ''
+supabase_key = ''
 supabase_client = supabase.create_client(supabase_url, supabase_key)
 # Set session lifetime to 60 minutes
 app.permanent_session_lifetime = timedelta(minutes=60)
